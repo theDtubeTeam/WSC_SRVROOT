@@ -1,0 +1,25 @@
+﻿<html>
+	<head>
+		<title>FlashHax</title>
+		<style>
+			body {
+				background-color: #4b9dbc;
+			}
+		</style>
+	</head>
+	<body>
+		<script>
+			var shouldRunHax = document.location.search == "?hax" && document.location.hash != "#stop";
+			var shouldReload = document.location.hash != "#stop";
+			var isJP = (navigator.userAgent.indexOf("ja") == -1) ? false : true;
+			var FlashHax = '<object data="/static/menu.swf"><param name="allowScriptAccess" value="always"><param name="FlashVars" value="isJP=' + isJP + '"></object>';
+			if (shouldRunHax){
+				document.body.innerHTML += FlashHax;
+			}else if (shouldReload){
+				document.location = "?hax#stop";
+			}else{
+				document.body.innerHTML += "<center><br><br><h1>Please bookmark this page now</h1></center>";
+			}
+		</script>
+	</body>
+</html>

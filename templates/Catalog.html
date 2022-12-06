@@ -1,0 +1,198 @@
+<html><head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<link rel="shortcut icon" href="/oss/favicon.ico"> 
+<link href="/static/css/oss.css" rel="stylesheet" type="text/css">
+<link href="/static/css/error.css" rel="stylesheet" type="text/css">
+<link href="/static/css/catalog.css" rel="stylesheet" type="text/css">
+
+<script language="JavaScript" src="/static/js//ec.js"></script>
+<script language="JavaScript" src="/static/js//error.js"></script>
+<script language="JavaScript" src="/static/js//ec.js"></script>
+<script language="JavaScript" src="/static/js//images.js"></script>
+<script language="JavaScript" src="/static/js//sound.js"></script>
+<script language="JavaScript" src="/static/js//shop.js"></script>
+<script language="JavaScript" src="/static/js//oss.js"></script>
+<script language="JavaScript" src="/static/js//download.js"></script>
+
+<title>Catalog</title>
+<audio autoplay loop>
+    <source src="{{ url_for('static', filename='audio/bgm.mp3') }}">
+</audio>
+</head>
+
+<body onkeypress="kdown();" onload="initPage();">
+<div id="constElements">
+  <div id="tophelpshadow"><img src="/static/images//banner/top_help_shadow01.gif" width="132" height="75"></div>
+  <div id="help">
+    <img src="/static/images//banner/help_a.gif" name="ManualImage" width="52" height="55" border="0" id="ManualImageID" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('ManualImage','','/static/images//banner/help_b.gif',1); wiiFocusSound();" onclick="showHelp(); wiiSelectSound();">
+    <img src="/static/images//banner/help_gray.gif" width="52" height="55" border="0" id="ManualGrayImageID" style="display:none">
+    <img src="/static/images//spacer.gif" name="HelpSpacer" width="52" height="55" border="0" id="HelpSpacer" style="position:absolute; top:0px; left:0px; display:none">
+  </div>
+
+  <div id="top">
+    <img src="/static/images//banner/top_a.gif" name="TopImage" width="52" height="55" border="0" id="TopImageID" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('TopImage','','/static/images//banner/top_b.gif',1); wiiFocusSound();" onclick="showHome(); wiiCancelSound();">
+    <img src="/static/images//banner/top_gray.gif" width="52" height="55" border="0" id="TopGrayImageID" style="display:none">
+    <img src="/static/images//spacer.gif" name="MainSpacer" width="52" height="55" border="0" id="MainSpacer" style="position:absolute; top:0px; left:0px; display:none">
+  </div>
+  
+  <div class="dot" id="line01">･･･････････････････････････････････････････････････････････&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;･･</div>
+  <div class="dot" id="line02">･･･････････････････････････････････････････････････････････････････････････</div>
+  <div class="dot" id="upperLineLong" style="display:none">･･･････････････････････････････････････････････････････････････････････････</div>
+  
+  <div id="balanceInfo">
+    <script type="text/JavaScript">MM_preloadImages('/static/images//banner/Addpoints_everywhere.gif');</script>
+    <img src="/static/images//spacer.gif" name="PointSpacer" width="130" height="55" border="0" id="PointSpacer" style="position:absolute; top:376px; left:239px; z-index:20;">
+    <div id="Wiipoint">
+      <div align="center" class="buttonTextBlackM">Wii Points</div>
+    </div>
+    <div id="point" class="wiiPoint"><span id="currentBalance">1000</span></div>
+  </div>
+</div>
+<script language="JavaScript">MM_preloadImages(/static/images//banner/under_banner_b.gif');</script>
+<div id="underButtonL" style="display:block">
+    <div id="underbannershadowL" class="buttonBannerShadow">
+   	  <img src="/static/images//banner/under_banner_shadow.gif" width="211" height="75">
+   	</div>
+    <div id="underbannerL" class="buttonBanner">
+    	<img src="/static/images//banner/under_banner_a.gif" width="187" height="55" id="underImgL">
+    </div>
+    <div id="underspacerL" class="buttonSpacer">
+	  <a href="/home" id="underlinkL">
+    	<img id="underimageL" src="/static/images//spacer.gif" width="187" height="55" border="0" onmouseover="MM_swapImage('underImgL','','/static/images//banner/under_banner_b.gif',1); snd.playSE( cSE_Forcus );" onmouseout="MM_swapImgRestore()">
+      </a>	
+    </div>
+    <div id="underwordL" align="center" class="buttonTextBlackM buttonWord"><br>
+	Back
+    </div>
+</div>
+
+<div id="underButtonR" style="display:block">
+    <div id="underbannershadowR" class="buttonBannerShadow">
+   	  <img src="/static/images//banner/under_banner_shadow.gif" width="211" height="75">
+   	</div>
+    <div id="underbannerR" class="buttonBanner">
+    	<img src="/static/images//banner/under_banner_a.gif" width="187" height="55" id="underImgR">
+    </div>
+    <div id="underspacerR" class="buttonSpacer">
+	  <a href="" id="underlinkR">
+    	<img id="underimageR" src="/static/images//spacer.gif" width="187" height="55" border="0" onmouseover="MM_swapImage('underImgR','','/static/images//banner/under_banner_b.gif',1); snd.playSE( cSE_Forcus ); " onmouseout="MM_swapImgRestore()">
+      </a>	
+    </div>
+    <div id="underwordR" align="center" class="buttonTextBlackM buttonWord"><br>
+	Next
+    </div>
+</div>
+
+<div id="underButton" style="display:none">
+    <div id="underbannershadow" class="buttonBannerShadow">
+    	<img src="images//banner/under_banner_shadow.gif" width="211" height="75"></div>
+    <div id="underbanner" class="buttonBanner">
+    	<img src="images//banner/under_banner_a.gif" width="187" height="55" id="underImg"></div>
+    <div id="underspacer" class="buttonSpacer">
+	<a href="" id="underlink">
+    	<img id="underimage" src="images//spacer.gif" width="187" height="55" border="0" onmouseover="MM_swapImage('underImg','','images//banner/under_banner_b.gif',1); snd.playSE( cSE_Forcus );" onmouseout="MM_swapImgRestore()">
+    	</a>
+    </div>
+    <div id="underword" align="center" class="buttonTextBlackM buttonWord"></div>
+</div>
+
+
+<div id="text01-01">
+<div align="left" id="listinfo" class="titleBlackL">
+            <script language="JavaScript">
+                document.write("Catalog".replace('<BR>', ' '));
+            </script>
+        </div>
+    </div>
+
+
+<div style="position:absolute; left:0px; top:0px; width:1px; height:1px; z-index:6;">
+    <img src="/static/images//spacer.gif" name="ktouch" width="1" height="1" border="0" id="ktouch">
+</div>
+<div id="page">
+  <div align="right" class="buttonTextBlackM">
+    <div align="center">
+      1/1</div>
+  </div>
+</div>
+<div id="catalogFrame" class="catalogFrame">
+    <table height="400"><tbody><tr><td>
+    {%for i in results%}
+    <div id="panel" style="left:0px; width:488px; height:91px; z-index:1">
+      <div class="contentsBlack" id="Platform">{{ i['category'] }}</div>
+      <div class="contentsBlack" id="Publisher">{{ i['coder'] }}</div>
+      <div style="overflow:hidden" nowrap="" id="TitleName2stline">
+          <span id="title2_1" class="catalogTitleBlack_01">{{ i['short_description'] }}</span> <!-- Short Description -->
+        </div>
+      <div style="overflow:hidden" nowrap="" id="TitleName1stline">
+	  <span id="title1_1" class="catalogTitleBlack_01">{{ i['display_name'] }}</span> <!-- App Title -->
+      </div>
+      
+      <div id="ImageforCatalogpage">
+        <img src="{{ i['icon_url'] }}" width="96" height="72">
+        </div>
+      
+      <div id="UPDATE1" style="display:none">  <!-- This is where you would add if the app was updated -->
+        <div id="NEW1"><img src="/static/images//banner/new_update.png" width="150" height="23"></div>
+            <div class="headerBlueM" id="NEWtext1"><div align="center">Updated!</div></div>
+          </div>
+      
+      <div id="giftTitle1" style="">
+        <div id="spacer">
+          <a href="javascript:showGiftTrans('')" target="_top" name="goTitleDetailsLink1">
+            <img name="ImageB1" src="/static/images//spacer.gif" width="488" height="91" border="0" onmouseover="MM_swapImage('Image1','','/static/images//banner/B_04_softbanner_b.gif',1);wiiFocusSound();" onmouseout="MM_swapImgRestore()" onclick="wiiSelectSound();">
+          </a>
+        </div>
+        <div id="points">
+          <div align="right" name="purchasePoint1" class="catalogTitleBlackBold">0 Wii Points</div>
+        </div>
+      </div>
+      <div id="storedGiftTitle1" style="display:none">     
+        <div id="spacer">
+          <a id="giftAnchor1" href="" name="goTitleDetailsLink1">
+            <img name="ImageB1" src="/static/images//spacer.gif" width="488" height="91" border="0" onmouseover="MM_swapImage('Image1','','/static/images//banner/B_04_softbanner_b.gif',1);wiiFocusSound();" onmouseout="MM_swapImgRestore()" onclick="wiiSelectSound();">
+          </a>
+        </div>
+        <div id="points">
+          <div align="right" name="purchasePoint1" class="catalogTitleBlackBold">
+              Gift</div>
+        </div>
+      </div>
+      <div id="regularTitle1" style="">
+        <div id="spacer">
+          <a href="/app?app={{ i['internal_name'] }}" target="_top" name="goTitleDetailsLink1">
+            <img name="ImageB1" src="/static/images//spacer.gif" width="488" height="91" border="0" onmouseover="MM_swapImage('Image1','','/static/images//banner/B_04_softbanner_b.gif',1);wiiFocusSound();" onmouseout="MM_swapImgRestore()" onclick="wiiSelectSound();">
+          </a>
+        </div>
+        
+        <div id="points">
+          <div align="right" name="purchasePoint1" class="catalogTitleBlackBold">
+          0 Wii Points
+	  </div>
+        </div>
+      </div>
+      <div id="scaTitle1" style="display:none">
+      </div>
+      <img id="ImageA1" src="/static/images//banner/B_04_softbanner_a.gif" name="Image1" width="488" height="91" border="0">
+    </div>
+    {%endfor%}
+</td></tr></tbody></table>
+    </div>
+  
+  <div id="icrExpirePage" style="display:none">
+  <div id="textIcrExpire">
+      <div align="center" class="contentsBlackM">
+          <table height="100%">
+              <tbody><tr>
+                  <td align="left" valign="middle">
+                      This offer has expired.<br>You may no longer download a title for free.</td>
+              </tr>
+          </tbody></table>
+      </div>
+  </div>
+</div>
+
+
+
+
+</body></html>
