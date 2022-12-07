@@ -1,3 +1,19 @@
+function trace(message) {
+    // TODO: should this become an enum of errors for easier localization?
+    //trace("An error occurred: " + message);
+    //var form;
+    //window.location.href = "/trace?msg="+message;
+    var iframe = document.createElement('iframe');
+    iframe.src = "/trace?msg="+message;
+    iframe.width=0;
+    iframe.height=0;
+    iframe.style = "display:none;";
+    document.body.appendChild(iframe);
+        //form = document.createElement("p);
+        //form.innerHTML = message;
+        //document.body.appendChild(form);
+
+}
 /*
  *  Copyright 2005-2014 Acer Cloud Technology, Inc.
  *  All Rights Reserved.
@@ -58,7 +74,7 @@ function showOldPage(page)
 
 function doPost(url, params)
 {
-    //trace("doPost(" + url + ", " + params + ")");
+    trace("doPost(" + url + ", " + params + ")");
     if (url != null && params != null) {
 	    var form;
         form = document.getElementById("PostForm");
@@ -141,9 +157,9 @@ function updateHistory()
         }
         ec.setSessionValue("history.-1", lastPage);
         ec.setSessionValue("history.0", currPage);
-        //trace("lastPage is " + lastPage);
-        //trace("currPage is " + currPage);
-        //trace("currUrl is " + currUrl);
+        trace("lastPage is " + lastPage);
+        trace("currPage is " + currPage);
+        trace("currUrl is " + currUrl);
         
         // Hack for page B_02's showBack
         if (page.indexOf("B_04") == 0 || page.indexOf("W_03") == 0) {
@@ -770,7 +786,7 @@ function createPostForm(name, page, includeWeakToken, otherFields)
         var url = getSecureUrl(page);
         form = document.createElement("form");
         form.action = url;
-        form.method = "post";
+        form.method = "get";
         form.id=name;
         document.body.appendChild(form);
     }
@@ -1433,11 +1449,11 @@ function checkProgress(firstTime, operation, description, onDone)
 
     if (progress.status == EC_ERROR_NOT_DONE) {    
         if (ecTimeout != null) {
-            //trace(operation + " using timeout " + ecTimeout.timeout);
-            //trace(operation + " total size " + progress.totalSize);
-            //trace(operation + " downloaded size " + progress.downloadedSize + " last " + ecTimeout.lastDownloadedSize);
-            //trace(operation + " phase " + progress.phase + " last " + ecTimeout.lastPhase);
-            //trace(operation + " no progress millis " + ecTimeout.noProgressMillis);
+            trace(operation + " using timeout " + ecTimeout.timeout);
+            trace(operation + " total size " + progress.totalSize);
+            trace(operation + " downloaded size " + progress.downloadedSize + " last " + ecTimeout.lastDownloadedSize);
+            trace(operation + " phase " + progress.phase + " last " + ecTimeout.lastPhase);
+            trace(operation + " no progress millis " + ecTimeout.noProgressMillis);
             if (firstTime) {
                 ecTimeout.noProgressMillis = 0;
                 ecTimeout.lastDownloadedSize = 0;
@@ -1712,12 +1728,12 @@ function getHasPersonalizedTicket(titleId)
 {
     // See if we have a personalized ticket for the title
     var tickets = ec.getTicketInfos (titleId);
-    //trace("getting ticket for title " + titleId);
+    trace("getting ticket for title " + titleId);
     if (typeof(tickets) == "object") {
         var n;
         for (n = 0;  n < tickets.length; n++) {
             var ticket = tickets.get(n);
-            //trace("ticket for title " + titleId + " has deviceId " + ticket.deviceId);
+            trace("ticket for title " + titleId + " has deviceId " + ticket.deviceId);
             if (ticket.deviceId != 0) {
             	return true;
             }               
@@ -2072,8 +2088,8 @@ function extractFromXML(xml, tag)  // parsing tags
 function isPageJump()
 {
 	var pageJump = false;
-    //trace("last page " + ec.getSessionValue("history.-1"));
-    //trace("shop entry page " + ec.getSessionValue("shopEntryPage"));
+    trace("last page " + ec.getSessionValue("history.-1"));
+    trace("shop entry page " + ec.getSessionValue("shopEntryPage"));
     if (ecSupportsSession()) {
     	if ((ec.getSessionValue("history.-1") == null) && 
     		(ec.getSessionValue("shopEntryPage") != null)) {

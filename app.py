@@ -83,6 +83,11 @@ def modify_query(**new_values):
 @app.route("/")
 def splash():
     return render_template('splash.html')
+@app.route("/trace")
+def logger():
+    selected_app = request.args.get('msg', type=str)
+    print(selected_app)
+    return "ok"
 
 @app.route("/B_24.jsp")
 def randompage():
