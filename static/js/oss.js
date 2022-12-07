@@ -1,3 +1,8 @@
+function sendGiftMail(friend, url, msg, mii) {
+    wnwc24 = new wiiNwc24();
+    wnwc24.sendGiftMailAsync(friend, url, msg, mii);
+}
+
 function trace(message) {
     // TODO: should this become an enum of errors for easier localization?
     //trace("An error occurred: " + message);

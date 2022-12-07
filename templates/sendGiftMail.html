@@ -835,7 +835,7 @@ trace(checking);
 
 function giveGift()
 {
-	var nextUrl = '/app?app=';
+	var nextUrl = 'B_21.jsp?titleId=&itemId=&recipient=';
 	var messageElem = document.getElementById("message");
 	var msg = messageElem.value;
 	var transId = "";
@@ -877,7 +877,7 @@ function giveGift()
 	}
 	if (giftStatus == "sending") {
 	    if (checking=="true") {
-		window.location = nextUrl;
+		showPage(nextUrl);
 	    }
 	} else {
 		var titleId = '';
@@ -900,91 +900,6 @@ function initPage()
       '/static/images/banner/nameplate_R.png',
       '/static/images/banner/B_20_MiiSelect_btn_b.png');
 	var nwc24 = new wiiNwc24 ;
-	if(!nwc24.sendable) nwc24.dispError();
-	var friendIndex = parseInt( '' ) ;
-	var friendName = null;
-	friendName = nwc24.getFriendInfo(friendIndex, "name");
-	if (friendName != null)
-		friendName = encodeHTML(friendName);
-	var friendCode = nwc24.getFriendInfo(friendIndex, "userId");
-
-	trace("friendIndex: "+friendIndex);
-	trace("friendName: "+friendName);
-	trace("friendCode: "+friendCode);
-
-	if (ecSupportsSession()) {
-		var giftStatus = ec.getSessionValue("giftStatus");
-		trace("giftStatus:"+giftStatus);
-		if (giftStatus != "receiving") {
-			trace("checking:"+checking);
-			if  (checking=="true") {        
-				setUnderButtonL(true, 'Back', "javascript:showOldPage('B_18.jsp')", "wiiCancelSound()");
-				document.getElementById("sendmessage").style.display='';
-			}
-		} else {
-			var giftAction = ec.getSessionValue("giftAction");
-			trace("giftAction:"+giftAction);
-			trace("friendIndex: "+friendIndex)
-			if (friendName == null){
-				goGiftLoop(); //gift is from a stranger, don't send message
-			} else {
-			document.getElementById("receivemessage").style.display='';
-			}
-		}
-	}
-
-	var len=document.getElementsByName("recipientName").length;
-	if (recipientName != null && len >0) {
-		for(i=0;i<len;i++) {
-			document.getElementsByName("recipientName")[i].innerHTML = friendName;
-		}
-	}
-		
-	if ((checking=="true") || (giftStatus == "receiving")) {
-		document.getElementById("messageEditor").style.display='';
-		setUnderButtonR(true, 'OK', "javascript:giveGift()", "wiiSelectSound()");
-
-	} else {
-
-        document.getElementById("reasonText").style.fontSize='14px';
-
-        document.getElementById("BGimg").style.display='none';
-        document.getElementById("statusMessage").style.display='';
-        document.getElementById("bannershadow").style.display='';
-        document.getElementById("spacerL").style.display='';
-        document.getElementById("bannerL").style.display='';
-        document.getElementById("wordL").style.display='';
-        document.getElementById("text01-01").innerHTML = 'Gift';
-
-        if (giftStatus == "sending") {
-            document.getElementById("OKBtnAnchor").href="javascript:showOldPage('B_18.jsp')";
-        }
-    }
-
-	if (giftStatus == "receiving") {
-		document.getElementById("constElements").style.display='none';
-		document.getElementById("giftline").style.display='';
-		document.getElementById("giftcurrentBalance").innerHTML = getBalance();
-		setUnderButtonL(false);
-		document.getElementById("text01-01").innerHTML = 'Thank-You Message';
-	}
-
-  window.miiSelector = new NJSL.MiiSelector
-    ({
-        basePanel              : "basePanel",
-        miiContainer           : "miiContainer",
-        baseBanner             : "baseBanner",
-        selectedMiiFace        : "selectedMiiFace",
-        bannerDir              : "/static/images//banner",
-        miiBanner1Img          : "B_20_MiiSelect_miiback1.png",
-        miiBanner2Img          : "B_20_MiiSelect_miiback2.png",
-        miiBanner3Img          : "B_20_MiiSelect_miiback3.png",
-        miiBanner4Img          : "B_20_MiiSelect_miiback4.png",
-        miiBanner5Img          : "B_20_MiiSelect_miiback5.png",
-        miiFocusMarkA          : "B_20_MiiSelect_miiback_null.gif",
-        miiFocusMarkB          : "B_20_MiiSelect_miiback_b.png",
-        clickHandler           : giveGift
-    });
 }
 
 var scroll_step = 30;
@@ -1132,68 +1047,21 @@ function kdown()
   </div>
 </div>
 
-<div id="BGimg" style="position:absolute; left:0px; top:0px; width:608px; height:456px; z-index:0; overflow: hidden;">
+<div id="BGimg" style="position:absolute; display:none; left:0px; top:0px; width:608px; height:456px; z-index:0; overflow: hidden;">
   <img src="/static/images//back/B_19_bg.png" width="608" height="456" border="0"/>
 </div>
 
+<script>
+function handleMsgSend() {
+	var msg = document.getElementById("msg").value;
+	sendGiftMail({{ friend }}, "/debug", msg, "3") 
+}
+</script>
+
+
 <div class="titleBlackL" id="text01-01">Send a Message with Your Gift</div>
-
-<div id="statusMessage" style="position:absolute; left:34px; top:85px; width:542px; height:195px; display:none">
-  <div id="reasonText" align="center" class="buttonTextBlackM"><table height="100%"><tr><td align="left" valign="middle">
-	</td></tr></table></div>
-</div>
-
-<div id="bannershadow" style="display:none"><img src="/static/images//banner/under_banner_shadow.gif" width="211" height="75" /></div>
-<div id="spacerL" style="display:none">
-  <a id="OKBtnAnchor" href="javascript:showBack()"><img src="/static/images//spacer.gif" width="187" height="55" border="0" onmouseover="MM_swapImage('Image7','','/static/images//banner/under_banner_b.gif',1);wiiFocusSound();" onmouseout="MM_swapImgRestore()" onclick="wiiSelectSound();"/></a>
-</div>
-<div id="bannerL" style="display:none"><img src="/static/images//banner/under_banner_a.gif" width="187" height="55" id="Image7" /></div>
-<div id="wordL" style="display:none">
-  <div align="center" ><span id="OKBtnWord" class="buttonTextBlackM">OK</span></div>
-</div>
-
-
-<div class="catalogTitleBlack" id="text02-01" name="sendmessage" style="display:none">
-	Send a message to <span name="recipientName"></span></div>
-<div class="catalogTitleBlack" id="text02-01" name="receivemessage" style="display:none">
-	Send a message to <span name="recipientName"></span></div>
-
-<div id="messageEditor" style="display:none">
-<div class="contentsGrayL" id="text03-01">
-  Attach a Mii</div>
-
-  <div id="selectedMiiPanel">
-    <div id="selectedMiiSpacer" onclick="window.miiSelector.open(); wiiSelectSound();"
-      onmouseover="MM_swapImage('selectedMiiBox','','/static/images/banner/B_19_MiiBox_b.gif',0);wiiFocusSound();"
-      onmouseout="MM_swapImgRestore();" ></div>
-    <img id="selectedMiiBox" src="/static/images/banner/B_19_MiiBox_a.gif" />
-    <img id="selectedMiiFace" src="/static/images/banner/B_19_no_one_face.gif" />
-  </div>
-
-  <div id="messagePanel"
-    onmouseover="MM_swapImage('messageBox','','/static/images/banner/B_19_TextBox_b.gif',0);wiiFocusSound();"
-    onmouseout="MM_swapImgRestore();">
-    <textarea id="messageTextarea" name="message" onmousedown='if(kbd) kbd.call( cKT_Default, 4, false, "Write a message" ); document.getElementById("messageTextarea2").style.display="none";' value=""></textarea>
-    <div id="messageTextarea2">Write a message</div>
-  </div>
-  <img id="messageBox" src="/static/images//spacer.gif"></div>
-
-  <div id='basePanel'>
-    <img id='baseBanner' src='/static/images/banner/B_20_MiiSelect_dialog_bg.png' />
-    <div id='miiContainer' style='background-image:url("/static/images/banner/B_20_MiiSelect_backdrop.png");' ></div> 
-    <div id='quitSpacer'
-      onmouseover="MM_swapImage('quitButton','','/static/images/banner/B_20_MiiSelect_btn_b.png',0);wiiFocusSound();"
-      onmouseout="MM_swapImgRestore();" ></div>
-    <img id='quitButton' src='/static/images/banner/B_20_MiiSelect_btn_a.png' />
-    <div id='NoMii' style='position:absolute; top:153px; left:67px; width:472px; height:196px; z-index:103; display: none;'><table width="100%" height="100%"><tr><td align="center" valign="middle"><span class="contentsBlackM">You don&rsquo;t have any Mii characters on your Wii.<BR>You can make Mii characters in the Mii Channel.</span></td></tr></table></div>
-    <div id='quitMessage'>Quit</div> 
-    <div id='nicknameBox' style="display:none;">
-      <table cellspacing=0 cellpadding=0><tbody>
-        <tr><td><img src='/static/images/banner/nameplate_L.png' /></td><td id='nicknamePanel' style='background-image:url("/static/images/banner/nameplate_C.png");'></td><td><img src='/static/images/banner/nameplate_R.png' /></td></tr>
-      </tbody></table>
-    </div>
-
-  </div>
+<input type="text" onmousedown='if(kbd) kbd.call( cKT_Default, 4, false, "Write a message" );' id="msg">
+<input type="submit" onmousedown='handleMsgSend();' id="msgOk">
 </div>
 
 <div id='NoMii' class="contentsBlackM" style='position:absolute; top:153px; left:67px; width:472px; height:196px; z-index:103; display: none;'><table width="100%" height="100%"><tr><td align="center" valign="middle">You don&rsquo;t have any Mii characters on your Wii.<BR>You can make Mii characters in the Mii Channel.</span></td></tr></table></div>

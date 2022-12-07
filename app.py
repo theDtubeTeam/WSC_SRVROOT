@@ -164,8 +164,14 @@ def settingsandfeatures():
     
 @app.route("/gift")
 def gift():
+    friend = request.args.get('friend', default='danbo', type=int)
     return render_template('gift.html')
-    
+
+@app.route("/sendGiftMail")
+def sgiftm():
+    friend = request.args.get('friend', type=str)
+    return render_template('sendGiftMail.html', friend=friend)
+
 @app.route("/wiiticket")
 def wiiticket():
     return render_template('wiiticket.html')

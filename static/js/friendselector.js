@@ -30,6 +30,13 @@ initMisc :
   function(args) {
     this.callback = args.clickHandler;
     this.nwc24Check();
+    this.nwc24Check();
+    this.nwc24Check();
+    this.nwc24Check();
+    this.nwc24Check();
+    this.nwc24Check();
+    this.nwc24Check();
+    this.nwc24Check();
   },
 
 initBanners :
@@ -50,7 +57,7 @@ initPanels :
     if(!this.friendContainer){ this.error("friendContainer is not found.");}
 
     /* set event hundlers */
-    this.basePanel.addEventListener('mousedown', bindTo(this.onMouseDown, this), false);
+    //this.basePanel.addEventListener('mousedown', bindTo(this.onMouseDown, this), false);
   },
 
 initFriends :
@@ -84,14 +91,14 @@ initFriends :
       friendPanel.className = 'friendPanel';
       faceSrc="miip://CID/" + miiCId + ".bmp?width=48&height=48" + "&bgR=159&bgG=224&bgB=246";
       friendPanel.innerHTML =
-        '<img id="friendBanner'+i+'" class="friendBanner" src="'+this.img.friendBannerA+'" '+
+        '<a href="javascript:window.location = \'/sendGiftMail?friend='+i+'\';"><img id="friendBanner'+i+'" class="friendBanner" src="'+this.img.friendBannerA+'" '+
         '/>'+
         '<img id="face'+i+'" class="face" src="'+ faceSrc +'" />'+
         '<div id="nickname"'+i+'" class="nickname" style="width:155px; overflow:hidden;">'+name+'</div>'+
         '<div id="spacer"'+i+'" class="spacer" '+
           'onmouseover="MM_swapImage(\'friendBanner'+i+'\',\'\',\''+this.img.friendBannerB+'\',0);wiiFocusSound();" '+
           'onmouseout="MM_swapImgRestore();" '+
-        '></div>';
+        '></div></a>';
       friendPanel.nickname = name;
       friendPanel.userId = userId;
       friendPanel.index = i;
