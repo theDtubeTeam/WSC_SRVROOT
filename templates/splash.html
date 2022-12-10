@@ -2357,7 +2357,6 @@ const unused = wiiShop.connecting;
 </head>
 
 <body link="black" vlink="black" alink="black" onkeypress="kdown();" onload="initPage();" style="overflow: hidden;">
-<a href="/gift">Gift Someone</a>
 <div id="bg"><img src="/static/images/back/Welcome_BG_E.png" width="608" height="456" border="0" onmouseover="move_fleeze_cursor();"></div>
 
 <div id="posLeftArrowID" class="posLeftArrow">
@@ -2460,10 +2459,10 @@ const unused = wiiShop.connecting;
 
 <div id="txtSoftList" align="center">
     <span class="style1">Rii Shop Channel</span>
-    <span class="style2">Recommended Titles</span>
+    <span class="style2">Gift Menu</span>
 </div>
 <div id="SoftListSpacer">
-    <a id="headerURL" href="javascript:showPage('B_04.jsp?p=1&amp;rec=true')">
+    <a id="headerURL" href="javascript:window.location = '/gift';">
         <img src="/static/images//spacer.gif" width="551" height="42" border="0" onmousedown="MM_swapImage('SofList','','/static/images//banner/GifA_SoftList_Press.png',1);focus_Header();" onmouseup="MM_swapImage('SofList','','/static/images//banner/GifA_SoftList_Over.png',1)focus_Header();" onmouseover="MM_swapImage('SofList','','/static/images//banner/GifA_SoftList_Over.png',1); snd.playSE( cSE_Forcus );move_fleeze_cursor();focus_Header();" onmouseout="MM_swapImage('SofList','','/static/images//banner/GifA_SoftList_noAction.png',1);" onclick="snd.playSE(cSE_Decide);">
     </a>
 </div>
