@@ -32,7 +32,7 @@ function trace(message) {
 
 var ec = new ECommerceInterface ();  // only create one per page
 
-var debug = false;
+var debug = true;
 var wii = true;
 var opera = true; // set by vcInitPage()
 var msie = false; // set by vcInitPage()
@@ -40,8 +40,8 @@ var testLicenseTypes = true;
 
 var opName;
 var opDesc;
-var htmlPath = "../html";
-var imagesPath = "../images";
+var htmlPath = "/";
+var imagesPath = "/static/images/";
 var ossPath = "";
 var secureOssPath = "";
 var ecTimeout = null;
@@ -73,7 +73,7 @@ function showOldPage(page)
         trace("ShowOldPage: going to " + url);
     	top.location=url;
     } else {
-    	showPage(page);
+    	window.location = page;
     }
 }
 

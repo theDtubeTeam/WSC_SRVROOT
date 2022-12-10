@@ -1,3 +1,7 @@
+function sendGiftMail(friend, url, msg, mii) {
+    wnwc24 = new wiiNwc24();
+    wnwc24.sendGiftMailAsync(friend, url, msg, mii);
+}
 /*
  *  Copyright 2005-2014 Acer Cloud Technology, Inc.
  *  All Rights Reserved.

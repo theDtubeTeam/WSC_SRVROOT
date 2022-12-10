@@ -36,8 +36,8 @@
 <!--  -----------------------------------------------------  -->
 <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
 <link rel="shortcut icon" href="/oss/favicon.ico" /> 
-<link href="static/css/oss.css" rel="stylesheet" type="text/css" />
-<link href="static/css/error.css" rel="stylesheet" type="text/css" />
+<link href="/static/css/oss.css" rel="stylesheet" type="text/css" />
+<link href="/static/css/error.css" rel="stylesheet" type="text/css" />
 <script type="text/JavaScript">
 <!--
 	var ecCheck = false;
@@ -50,13 +50,13 @@
 //-->
 </script>
 
-<SCRIPT language="JavaScript" src="static/js//ec.js"></SCRIPT>
-<SCRIPT language="JavaScript" src='static/js//error.js'></SCRIPT>
-<SCRIPT language="JavaScript" src="static/js//buttons.js"></SCRIPT>
-<SCRIPT language="JavaScript" src="static/js//images.js"></SCRIPT>
-<SCRIPT language="JavaScript" src='static/js//sound.js'></SCRIPT>
-<SCRIPT language="JavaScript" src="static/js//shop.js"></SCRIPT>
-<SCRIPT language="JavaScript" src="static/js//oss.js"></SCRIPT>
+<SCRIPT language="JavaScript" src="/static/js//ec.js"></SCRIPT>
+<SCRIPT language="JavaScript" src='/static/js//error.js'></SCRIPT>
+<SCRIPT language="JavaScript" src="/static/js//buttons.js"></SCRIPT>
+<SCRIPT language="JavaScript" src="/static/js//images.js"></SCRIPT>
+<SCRIPT language="JavaScript" src='/static/js//sound.js'></SCRIPT>
+<SCRIPT language="JavaScript" src="/static/js//shop.js"></SCRIPT>
+<SCRIPT language="JavaScript" src="/static/js//oss.js"></SCRIPT>
 
 <script type="text/JavaScript">
 <!--
@@ -139,8 +139,8 @@ function initPageCommon()
 	
 	
 
-	imagesPath = "static/images/";
-	htmlPath = "/oss/oss/common/html";
+	imagesPath = "/static/images/";
+	htmlPath = "/static/html";
 	ossPath = "https://oss-auth.shop.wii.com/oss/serv/";
 	secureOssPath = "https://oss-auth.shop.wii.com/oss/serv/";	
 
@@ -164,8 +164,8 @@ function initPageCommon()
     }
 
 	
-	MM_preloadImages('static/images//banner/under_banner_a.gif');
-	var supportsCreditCard = 'true';
+	MM_preloadImages('/static/images//banner/under_banner_a.gif');
+	var supportsCreditCard = 'false';
 	if (ecSupportsSession()) {
         	ec.setSessionValue("supportsCreditCard", supportsCreditCard);
     	}
@@ -640,7 +640,7 @@ var clubImgName_b = "";
 
 function membershipImgSwap()
 {
-    MM_swapImage('clubImage','','static/images//banner/' + clubImgName_b,1)
+    MM_swapImage('clubImage','','/static/images//banner/' + clubImgName_b,1)
 }
 
 function S_01_getLoyaltyPic() 
@@ -662,7 +662,7 @@ function S_01_setLoyaltyImage() {
     imageName=S_01_getLoyaltyPic();
     cardImg = document.getElementById('clubImage');
     if(cardImg && imageName != '') {
-        cardImg.src='static/images//banner/' + imageName;
+        cardImg.src='/static/images//banner/' + imageName;
     }
 
 }
@@ -701,33 +701,12 @@ function setValidElements()
 {
     var shop = new wiiShop;
     var validElements = {};
-  if (shop.isCompatibleMode) {
-    validElements["membership"] = false ;
-  }
-  else{
-    validElements["membership"] = false
-  }
-<!-- Begin ICR Demo -->
-    if ( !shop.isCompatibleMode  && getICRUserStatus() == "ACTIVATED" ) {
-        validElements["icr"] = true ;
-    } else {
-        validElements["icr"] = false ;
-    }
-<!-- End ICR Demo -->
-    if (shop.isCompatibleMode) {
-        validElements["giftbox"] = false;
-    }
-    else{
-        validElements["giftbox"] = true;
-    }
-    validElements["gamecard"] = true
-    if (shop.isCompatibleMode) {
-        validElements["connect"] = false;
-    }
-    else{
-        validElements["connect"] = false
-    }
-    validElements["access"] = false
+    validElements["membership"] = true;
+    validElements["icr"] = true;
+    validElements["giftbox"] = true;
+    validElements["gamecard"] = true;
+    validElements["connect"] = true;
+    validElements["access"] = true;
     validElements["record"] = true;
 
     return validElements;
@@ -742,9 +721,7 @@ function createElementList()
     var SettingList = {
 insertElement:
         function(element){
-            if(validElements[element]){
                 elementList.push(element);
-            }
         },
 showElements:
         function(){
@@ -775,20 +752,20 @@ function initPage()
   else
   {
     document.getElementById("catalogWiiU").style.display='none';
-    MM_preloadImages('static/images//banner/under_banner_b.gif',
-            'static/images//banner/help_b.gif',
+    MM_preloadImages('/static/images//banner/under_banner_b.gif',
+            '/static/images//banner/help_b.gif',
 <!-- Begin ICR Demo -->
-            'static/images//banner/icr_b_E.gif',
+            '/static/images//banner/icr_b_E.gif',
 <!-- End ICR Demo -->
-            'static/images//banner/top_b.gif',
-            'static/images//banner/record_b.gif',
-            'static/images//banner/gift_b.gif',
-            'static/images//banner/clabnintendo_b.gif',
-            'static/images//banner/accessible_b.gif',
-            'static/images//banner/gamecard_b.gif',
-            'static/images//banner/connect_b.gif',
-            'static/images//banner/mynintendo_b.gif',
-            'static/images//banner/mynintendoEU_b.gif');
+            '/static/images//banner/top_b.gif',
+            '/static/images//banner/record_b.gif',
+            '/static/images//banner/gift_b.gif',
+            '/static/images//banner/clabnintendo_b.gif',
+            '/static/images//banner/accessible_b.gif',
+            '/static/images//banner/gamecard_b.gif',
+            '/static/images//banner/connect_b.gif',
+            '/static/images//banner/mynintendo_b.gif',
+            '/static/images//banner/mynintendoEU_b.gif');
 
     var settingList = createElementList();
 <!-- Begin ICR Demo -->
@@ -808,11 +785,11 @@ function initPage()
 function initPageWiiU()
 {
 
-    MM_preloadImages('static/images//banner/under_banner_b.gif',
-                      'static/images//banner/top_b.gif',
-                      'static/images//banner/help_b.gif',
-                      'static/images//banner/record_b.gif',
-                      'static/images//banner/gamecard_b.gif');
+    MM_preloadImages('/static/images//banner/under_banner_b.gif',
+                      '/static/images//banner/top_b.gif',
+                      '/static/images//banner/help_b.gif',
+                      '/static/images//banner/record_b.gif',
+                      '/static/images//banner/gamecard_b.gif');
 
   document.getElementById("catalogFrame").style.display='none';
   document.getElementById("catalogFrame").style.height='0px';
@@ -870,26 +847,26 @@ function kdown()
 <!--  Technology, Inc.                                       -->
 <!--  -----------------------------------------------------  -->
 <div id="constElements">
-  <div id="tophelpshadow"><img src="static/images//banner/top_help_shadow01.gif" width="132" height="75" /></div>
+  <div id="tophelpshadow"><img src="/static/images//banner/top_help_shadow01.gif" width="132" height="75" /></div>
   <div id="help">
-    <img src="static/images//banner/help_a.gif" name="ManualImage"
+    <img src="/static/images//banner/help_a.gif" name="ManualImage"
      width="52" height="55" border="0" id="ManualImageID"  onmouseout="MM_swapImgRestore()" 
-     onmouseover="MM_swapImage('ManualImage','','static/images//banner/help_b.gif',1); wiiFocusSound();"
+     onmouseover="MM_swapImage('ManualImage','','/static/images//banner/help_b.gif',1); wiiFocusSound();"
      onclick="showHelp(); wiiSelectSound();"/>
-    <img src="static/images//banner/help_gray.gif" 
+    <img src="/static/images//banner/help_gray.gif" 
      width="52" height="55" border="0" id="ManualGrayImageID" style="display:none" />
-    <img src="static/images//spacer.gif" name="HelpSpacer" width="52" height="55" border="0"
+    <img src="/static/images//spacer.gif" name="HelpSpacer" width="52" height="55" border="0"
      id='HelpSpacer' style="position:absolute; top:0px; left:0px; display:none"/>
   </div>
 
   <div id="top">
-    <img src="static/images//banner/top_a.gif" name="TopImage" 
+    <img src="/static/images//banner/top_a.gif" name="TopImage" 
      width="52" height="55" border="0" id="TopImageID" onmouseout="MM_swapImgRestore()" 
-     onmouseover="MM_swapImage('TopImage','','static/images//banner/top_b.gif',1); wiiFocusSound();"
+     onmouseover="MM_swapImage('TopImage','','/static/images//banner/top_b.gif',1); wiiFocusSound();"
      onclick="showHome(); wiiCancelSound();"/>
-    <img src="static/images//banner/top_gray.gif" 
+    <img src="/static/images//banner/top_gray.gif" 
      width="52" height="55" border="0" id="TopGrayImageID" style="display:none" />
-    <img src="static/images//spacer.gif" name="MainSpacer" width="52" height="55" border="0"
+    <img src="/static/images//spacer.gif" name="MainSpacer" width="52" height="55" border="0"
      id='MainSpacer' style="position:absolute; top:0px; left:0px; display:none"/>
   </div>
   
@@ -897,11 +874,9 @@ function kdown()
   <div class="dot" id="line02">･･･････････････････････････････････････････････････････････････････････････</div>
   <div class="dot" id="upperLineLong" style="display:none">･･･････････････････････････････････････････････････････････････････････････</div>
   
-  <div id='balanceInfo' onclick="showPoints(); wiiSelectSound();" 
-   onmouseover="MM_swapImage('PointSpacer','','static/images//banner/Addpoints_everywhere.gif',1);wiiFocusSound();" 
-   onmouseout="MM_swapImgRestore();">
-    <script type="text/JavaScript">MM_preloadImages('static/images//banner/Addpoints_everywhere.gif');</script>
-    <img src="static/images//spacer.gif" name="PointSpacer" width="130" height="55" border="0"
+  <div id='balanceInfo'>
+    <script type="text/JavaScript">MM_preloadImages('/static/images//banner/Addpoints_everywhere.gif');</script>
+    <img src="/static/images//spacer.gif" name="PointSpacer" width="130" height="55" border="0"
      id='PointSpacer' style="position:absolute; top:376px; left:239px; z-index:20;"/>
     <div id="Wiipoint">
       <div align="center" class="buttonTextBlackM">Wii Points</div>
@@ -919,18 +894,18 @@ function kdown()
 <!--  the prior express written permission of Acer Cloud     -->
 <!--  Technology, Inc.                                       -->
 <!--  -----------------------------------------------------  -->
-<script language="JavaScript">MM_preloadImages('static/images//banner/under_banner_b.gif');</script>
+<script language="JavaScript">MM_preloadImages('/static/images//banner/under_banner_b.gif');</script>
 <div id="underButtonL" style="display:none">
     <div id="underbannershadowL" class="buttonBannerShadow">
-   	  <img src="static/images//banner/under_banner_shadow.gif" width="211" height="75" />
+   	  <img src="/static/images//banner/under_banner_shadow.gif" width="211" height="75" />
    	</div>
     <div id="underbannerL" class="buttonBanner">
-    	<img src="static/images//banner/under_banner_a.gif" width="187" height="55" id="underImgL" />
+    	<img src="/static/images//banner/under_banner_a.gif" width="187" height="55" id="underImgL" />
     </div>
     <div id="underspacerL" class="buttonSpacer">
 	  <a href="" id="underlinkL">
-    	<img id="underimageL" src="static/images//spacer.gif" width="187" height="55" border="0"  
-    	onmouseover="MM_swapImage('underImgL','','static/images//banner/under_banner_b.gif',1); snd.playSE( cSE_Forcus );" 
+    	<img id="underimageL" src="/static/images//spacer.gif" width="187" height="55" border="0"  
+    	onmouseover="MM_swapImage('underImgL','','/static/images//banner/under_banner_b.gif',1); snd.playSE( cSE_Forcus );" 
     	onmouseout="MM_swapImgRestore()"/>
       </a>	
     </div>
@@ -940,15 +915,15 @@ function kdown()
 
 <div id="underButtonR" style="display:none">
     <div id="underbannershadowR" class="buttonBannerShadow">
-   	  <img src="static/images//banner/under_banner_shadow.gif" width="211" height="75" />
+   	  <img src="/static/images//banner/under_banner_shadow.gif" width="211" height="75" />
    	</div>
     <div id="underbannerR" class="buttonBanner">
-    	<img src="static/images//banner/under_banner_a.gif" width="187" height="55" id="underImgR" />
+    	<img src="/static/images//banner/under_banner_a.gif" width="187" height="55" id="underImgR" />
     </div>
     <div id="underspacerR" class="buttonSpacer">
 	  <a href="" id="underlinkR">
-    	<img id="underimageR" src="static/images//spacer.gif" width="187" height="55" border="0"  
-    	onmouseover="MM_swapImage('underImgR','','static/images//banner/under_banner_b.gif',1); snd.playSE( cSE_Forcus ); " 
+    	<img id="underimageR" src="/static/images//spacer.gif" width="187" height="55" border="0"  
+    	onmouseover="MM_swapImage('underImgR','','/static/images//banner/under_banner_b.gif',1); snd.playSE( cSE_Forcus ); " 
     	onmouseout="MM_swapImgRestore()"/>
       </a>	
     </div>
@@ -958,13 +933,13 @@ function kdown()
 
 <div id="underButton" style="display:none">
     <div id="underbannershadow" class="buttonBannerShadow">
-    	<img src="static/images//banner/under_banner_shadow.gif" width="211" height="75" /></div>
+    	<img src="/static/images//banner/under_banner_shadow.gif" width="211" height="75" /></div>
     <div id="underbanner" class="buttonBanner">
-    	<img src="static/images//banner/under_banner_a.gif" width="187" height="55" id="underImg" /></div>
+    	<img src="/static/images//banner/under_banner_a.gif" width="187" height="55" id="underImg" /></div>
     <div id="underspacer" class="buttonSpacer">
 	<a href="" id="underlink">
-    	<img id="underimage" src="static/images//spacer.gif" width="187" height="55" border="0" 
-    	onmouseover="MM_swapImage('underImg','','static/images//banner/under_banner_b.gif',1); snd.playSE( cSE_Forcus );" 
+    	<img id="underimage" src="/static/images//spacer.gif" width="187" height="55" border="0" 
+    	onmouseover="MM_swapImage('underImg','','/static/images//banner/under_banner_b.gif',1); snd.playSE( cSE_Forcus );" 
     	onmouseout="MM_swapImgRestore()">
     	</a>
     </div>
@@ -973,7 +948,7 @@ function kdown()
 
 
 <div style="position:absolute; left:0px; top:0px; width:1px; height:1px; z-index:6;">
-  <img src="static/images//spacer.gif" name="ktouch" width="1" height="1" border="0" id="ktouch"/>
+  <img src="/static/images//spacer.gif" name="ktouch" width="1" height="1" border="0" id="ktouch"/>
 </div>
 
 <!-- title and middle line -->
@@ -984,9 +959,9 @@ function kdown()
 
 <!-- Delete Usage Record -->
 <div id="record" style="top:480px;"> 
-  <img src="static/images//banner/record_a.gif" name="Image10" border="0" id="Image10" />
-  <img id="recordSpacer" onmouseout="MM_swapImgRestore()" src='static/images//spacer.gif'
-  	 onmouseover="MM_swapImage('Image10','','static/images//banner/record_b.gif',1); if(snd) snd.playSE( cSE_Forcus );"
+  <img src="/static/images//banner/record_a.gif" name="Image10" border="0" id="Image10" />
+  <img id="recordSpacer" onmouseout="MM_swapImgRestore()" src='/static/images//spacer.gif'
+  	 onmouseover="MM_swapImage('Image10','','/static/images//banner/record_b.gif',1); if(snd) snd.playSE( cSE_Forcus );"
   	 onclick='javascript:showPage("S_08.jsp"); if(snd) snd.playSE( cSE_Decide );' />
   <div id="usageRecordTxt">
   <div class="headerBlueM" id="text04-01"><table height="100%"><tr><td align="left" valign="middle">Remove Wii Shop Channel Account</td></tr></table></div>
@@ -995,11 +970,11 @@ function kdown()
 
 <!-- Loyalty system -->
 <!-- Set Gift -->
-<div id="giftbox" style="top:100px;display:none">
-  <img src="static/images//banner/gift_a.gif" name="Image11" border="0" id="Image11" />
-  <img id="giftSpacer" onmouseout="MM_swapImgRestore()" src='static/images//spacer.gif'
-  	 onmouseover="MM_swapImage('Image11','','static/images//banner/gift_b.gif',1); if(snd) snd.playSE( cSE_Forcus );"
-  	 onclick="window.location = '/gift';"/>
+<div id="giftbox" style="top:100px;">
+  <img src="/static/images//banner/gift_a.gif" name="Image11" border="0" id="Image11" />
+  <img id="giftSpacer" onmouseout="MM_swapImgRestore()" src='/static/images//spacer.gif'
+  	 onmouseover="MM_swapImage('Image11','','/static/images//banner/gift_b.gif',1); if(snd) snd.playSE( cSE_Forcus );"
+  	 onclick='javascript:window.location ="/gift"; if(snd) snd.playSE( cSE_Decide );' />
   <div id="giftSettingsTxt">
   <div class="headerBlueM" id="text05-01"><table height="100%"><tr><td align="left" valign="middle">Gift Settings</td></tr></table></div>
   </div>
@@ -1008,10 +983,10 @@ function kdown()
 
 <!-- Show Gamecard input screen -->
 <div id="gamecard" style="top:195px;display:none">
-  <img src="static/images//banner/gamecard_a.gif" name="Image13" border="0" id="Image13" />
-  <img id="gamecardSpacer" onmouseout="MM_swapImgRestore()" src='static/images//spacer.gif'
-  	 onmouseover="MM_swapImage('Image13','','static/images//banner/gamecard_b.gif',1); if(snd) snd.playSE( cSE_Forcus );"
-  	 onclick="window.location = '/wiiticket';"/>
+  <img src="/static/images//banner/gamecard_a.gif" name="Image13" border="0" id="Image13" />
+  <img id="gamecardSpacer" onmouseout="MM_swapImgRestore()" src='/static/images//spacer.gif'
+  	 onmouseover="MM_swapImage('Image13','','/static/images//banner/gamecard_b.gif',1); if(snd) snd.playSE( cSE_Forcus );"
+  	 onclick='javascript:showGamecardScreen(); if(snd) snd.playSE( cSE_Decide );' />
   <div id="gamecardTitleTxt">
   <div class="headerBlueM" id="text04-01"><table height="100%"><tr><td align="left" valign="middle">Wii Download Ticket</td></tr></table></div>
   </div>
@@ -1020,10 +995,10 @@ function kdown()
 
 <!-- Show Connection ambassador register screen -->
 <div id="connect" style="top:290px;display:none">
-  <img src="static/images//banner/connect_a.gif" name="Image14" border="0" id="Image14" />
-  <img id="connectSpacer" onmouseout="MM_swapImgRestore()" src='static/images//spacer.gif'
-  	 onmouseover="MM_swapImage('Image14','','static/images//banner/connect_b.gif',1); if(snd) snd.playSE( cSE_Forcus );"
-  	 onclick='javascript:showConnectScreen(); if(snd) snd.playSE( cSE_Decide );' />
+  <img src="/static/images//banner/connect_a.gif" name="Image14" border="0" id="Image14" />
+  <img id="connectSpacer" onmouseout="MM_swapImgRestore()" src='/static/images//spacer.gif'
+  	 onmouseover="MM_swapImage('Image14','','/static/images//banner/connect_b.gif',1); if(snd) snd.playSE( cSE_Forcus );"
+  	 onclick='javascript:window.location = "/connectionAmbassador"; if(snd) snd.playSE( cSE_Decide );' />
   <div id="connectTitleTxt">
   <div class="headerBlueM" id="text04-01"><table height="100%"><tr><td align="left" valign="middle">Connection Ambassador</td></tr></table></div>
   </div>
@@ -1032,9 +1007,9 @@ function kdown()
 
 <!-- Show Accessible Titles -->
 <div id="access" style="top:385px;display:none">
-  <img src="static/images//banner/accessible_a.gif" name="Image12" border="0" id="Image12" />
-  <img id="accessSpacer" onmouseout="MM_swapImgRestore()" src='static/images//spacer.gif'
-  	 onmouseover="MM_swapImage('Image12','','static/images//banner/accessible_b.gif',1); if(snd) snd.playSE( cSE_Forcus );"
+  <img src="/static/images//banner/accessible_a.gif" name="Image12" border="0" id="Image12" />
+  <img id="accessSpacer" onmouseout="MM_swapImgRestore()" src='/static/images//spacer.gif'
+  	 onmouseover="MM_swapImage('Image12','','/static/images//banner/accessible_b.gif',1); if(snd) snd.playSE( cSE_Forcus );"
   	 onclick='javascript:showAccessibleTitles(); if(snd) snd.playSE( cSE_Decide );' />
   <div id="accessibleTitleTxt">
   <div class="headerBlueM" id="text04-01"><table height="100%"><tr><td align="left" valign="middle">Limited-edition titles</td></tr></table></div>
@@ -1060,9 +1035,9 @@ function kdown()
 }
 </style>
 <div id="icr" style="top:385px;display:none">
-  <img src="static/images//banner/icr_a_E.gif" name="Image20" border="0" id="Image20" />
-  <img id="icrSpacer" onmouseout="MM_swapImgRestore()" src='static/images//spacer.gif'
-  	 onmouseover="MM_swapImage('Image20','','static/images//banner/icr_b_E.gif',1); if(snd) snd.playSE( cSE_Forcus );"
+  <img src="/static/images//banner/icr_a_E.gif" name="Image20" border="0" id="Image20" />
+  <img id="icrSpacer" onmouseout="MM_swapImgRestore()" src='/static/images//spacer.gif'
+  	 onmouseover="MM_swapImage('Image20','','/static/images//banner/icr_b_E.gif',1); if(snd) snd.playSE( cSE_Forcus );"
   	 onclick='javascript:showPage("S_30.jsp"); if(snd) snd.playSE( cSE_Decide );' />
   <div id="icrTitleTxt">
   <div class="headerBlueM" id="text04-01"><table height="100%"><tr><td align="left" valign="middle">One Free Title</td></tr></table></div>
@@ -1077,22 +1052,21 @@ function kdown()
 
 <!-- Delete Usage Record -->
 <div id="recordWiiU" style="position: absolute;top:185px;left:48px;"> 
-  <img src="static/images//banner/record_a.gif" name="Image10WiiU" border="0" id="Image10WiiU" />
-  <img id="recordSpacer" onmouseout="MM_swapImgRestore()" src='static/images//spacer.gif'
-  	 onmouseover="MM_swapImage('Image10WiiU','','static/images//banner/record_b.gif',1); if(snd) snd.playSE( cSE_Forcus );"
+  <img src="/static/images//banner/record_a.gif" name="Image10WiiU" border="0" id="Image10WiiU" />
+  <img id="recordSpacer" onmouseout="MM_swapImgRestore()" src='/static/images//spacer.gif'
+  	 onmouseover="MM_swapImage('Image10WiiU','','/static/images//banner/record_b.gif',1); if(snd) snd.playSE( cSE_Forcus );"
   	 onclick='javascript:showPage("S_08.jsp"); if(snd) snd.playSE( cSE_Decide );' />
   <div id="usageRecordTxt">
   <div class="headerBlueM" id="text04-01"><table height="100%"><tr><td align="left" valign="middle">Remove Wii Shop Channel Account</td></tr></table></div>
   </div>
 </div>
 
-<a href="javascript:showGamecardScreen()">
+<!-- Show Gamecard input screen -->
 <div id="gamecardWiiU" style="position: absolute;top:95px;left:48px;">
-<a href="javascript:showGamecardScreen()">
-  <img src="static/images//banner/gamecard_a.gif" name="Image13WiiU" border="0" id="Image13WiiU" />
-  <img id="gamecardSpacer" onmouseout="MM_swapImgRestore()" src='static/images//spacer.gif'
-  	 onmouseover="MM_swapImage('Image13WiiU','','static/images//banner/gamecard_b.gif',1); if(snd) snd.playSE( cSE_Forcus );"
-  	 onclick="window.location = '/wiiticket';"/>
+  <img src="/static/images//banner/gamecard_a.gif" name="Image13WiiU" border="0" id="Image13WiiU" />
+  <img id="gamecardSpacer" onmouseout="MM_swapImgRestore()" src='/static/images//spacer.gif'
+  	 onmouseover="MM_swapImage('Image13WiiU','','/static/images//banner/gamecard_b.gif',1); if(snd) snd.playSE( cSE_Forcus );"
+  	 onclick='javascript:showGamecardScreen(); if(snd) snd.playSE( cSE_Decide );' />
   <div id="gamecardTitleTxt">
   <div class="headerBlueM" id="text04-01"><table height="100%"><tr><td align="left" valign="middle">Wii Download Ticket</td></tr></table></div>
   </div>
