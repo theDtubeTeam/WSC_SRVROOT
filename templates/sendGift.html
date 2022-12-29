@@ -1132,7 +1132,7 @@ function kdown()
   </div>
 </div>
 
-<div id="BGimg" style="position:absolute; left:0px; top:0px; width:608px; height:456px; z-index:0; overflow: hidden;">
+<div id="BGimg" style="position:absolute; left:0px; top:0px; width:608px; height:456px; z-index:-6; overflow: hidden;">
   <img src="/static/images//back/B_19_bg.png" width="608" height="456" border="0"/>
 </div>
 
@@ -1166,7 +1166,7 @@ function kdown()
     <div id="selectedMiiSpacer" onclick="window.miiSelector.open(); wiiSelectSound();"
       onmouseover="MM_swapImage('selectedMiiBox','','/static/images/banner/B_19_MiiBox_b.gif',0);wiiFocusSound();"
       onmouseout="MM_swapImgRestore();" ></div>
-    <img id="selectedMiiBox" src="/static/images/banner/B_19_MiiBox_a.gif" />
+    <img id="selectedMiiBox" src="/static/images/banner/B_19_MiiBox_a.gif" onmouseover="MM_swapImage('selectedMiiBox','','/static/images/banner/B_19_MiiBox_b.gif',0);wiiFocusSound();"/>
     <img id="selectedMiiFace" src="/static/images/banner/B_19_no_one_face.gif" />
   </div>
 

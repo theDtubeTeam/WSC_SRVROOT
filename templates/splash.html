@@ -651,6 +651,13 @@ function installChannel(titleId) {
 	height:81px;
         max-width:282px;
 }
+#title01 {
+	position:absolute;
+	left:0px;
+	top:0px;
+    width:0px;
+	height:10px;
+}
 #rec02 {
 	position:absolute;
 	left:282px;
@@ -743,6 +750,12 @@ function installChannel(titleId) {
 	font-size: 24px;
 	font-family: "PW-RodinNTLG TT M";
 	margin-top: 12px;
+}
+.style6 {
+	color: #333333;
+	font-size: 15px;
+	font-family: "PW-RodinNTLG TT M";
+	margin-top: -18px;
 }
 .style13 {
 	font-weight: bold;
@@ -2377,7 +2390,15 @@ const unused = wiiShop.connecting;
   <div id="rec01" style="">
       <div id="soft01" class="posTitleSoft"></div>
       <div align="left" id="new01" class="posTitleNew" style="display:none"> <img src="/static/images//banner/NEW_en.gif"></div>
-      <div id="softShadow01" class="posTitleSoftShadow"><span class="btnSoft"><img name="btnSoft01" src="/static/images//banner/GifA_Soft_noAction.png" class="btnSoft" border="0"></span></div>
+      <div id="softShadow01" class="posTitleSoftShadow"><span class="btnSoft"><img name="Wii" src="/static/images//banner/GifA_Soft_noAction.png" class="btnSoft" border="0" <a href="/app?app=Check%20Mii%20Out%20Channel" </a onmousedown="MM_swapImage('Wii','','/static/images//banner/GifA_Soft_Press.png',1);focus_Header();" onmouseup="MM_swapImage('Wii','','/static/images//banner/GifA_Soft_Over.png',1)focus_Header();" onmouseover="MM_swapImage('Wii','','/static/images//banner/GifA_Soft_Over.png',1); snd.playSE( cSE_Forcus );move_fleeze_cursor();focus_Header();" onmouseout="MM_swapImage('Wii','','/static/images//banner/GifA_Soft_noAction.png',1);" onclick= "window.location='/home'></span></div>
+      <div id="softSpacer01" class="posTitleSoftSpacer"><a id="titleUrl01" href="/home"></a></div>
+      <div id="softFocusImage01" class="posTitleSoftFocusImage"></div>
+      <div id="details01" class="posTitleDetails" nowrap=""><span class="style13"></span></div>
+  </div>
+  <div id="title01" style="">
+      <div id="soft01" class="posTitleSoft"></div>
+      <div align="left" id="new01" class="posTitleNew" style="display:none"> <img src="/static/images//banner/NEW_en.gif"></div>
+      <div id="softShadow01" class="posTitleSoftShadow"><span class="btnSoft"><img name="btnSoft" src="/static/apps/CMOC.png" <div style="position:absolute; top:10px; left:10px; width:70px; z-index:20;"
       <div id="softSpacer01" class="posTitleSoftSpacer"><a id="titleUrl01" href=""></a></div>
       <div id="softFocusImage01" class="posTitleSoftFocusImage"></div>
       <div id="details01" class="posTitleDetails" nowrap=""><span class="style13"></span></div>
@@ -2385,26 +2406,51 @@ const unused = wiiShop.connecting;
   <div id="rec02" style="">
       <div id="soft02" class="posTitleSoft"></div>
       <div align="left" id="new02" class="posTitleNew" style="display:none"> <img src="/static/images//banner/NEW_en.gif"></div>
-      <div id="softShadow02" class="posTitleSoftShadow"><span class="btnSoft"><img name="btnSoft02" src="/static/images//banner/GifA_Soft_noAction.png" class="btnSoft" border="0"></span></div>
-      <div id="softSpacer02" class="posTitleSoftSpacer"><a id="titleUrl02" href=""></a></div>
+      <div id="softShadow02" class="posTitleSoftShadow"><span class="btnSoft"><img name="btnSoft02" src="/static/images//banner/GifA_Soft_noAction.png" class="btnSoft" border="0" onmousedown="MM_swapImage('btnSoft02','','/static/images//banner/GifA_Soft_Press.png',1);focus_Header();" onmouseup="MM_swapImage('btnSoft02','','/static/images//banner/GifA_Soft_Over.png',1)focus_Header();" onmouseover="MM_swapImage('btnSoft02','','/static/images//banner/GifA_Soft_Over.png',1); snd.playSE( cSE_Forcus );move_fleeze_cursor();focus_Header();" onmouseout="MM_swapImage('btnSoft02','','/static/images//banner/GifA_Soft_noAction.png',1);" onclick="snd.playSE(cSE_Decide);"></span></div>
+      <div id="softSpacer02" class="posTitleSoftSpacer"><a id="titleUrl02" href="/app?app=Check%20Mii%20Out%20Channel"></a></div>
       <div id="softFocusImage02" class="posTitleSoftFocusImage"></div>
       <div id="details02" class="posTitleDetails" nowrap=""><span class="style13"></span></div>
+  </div>
+  <div id="title02" style="">
+      <div id="soft01" class="posTitleSoft"></div>
+      <div align="left" id="new01" class="posTitleNew" style="display:none"> <img src="/static/images//banner/NEW_en.gif"></div>
+      <div id="softShadow01" class="posTitleSoftShadow"><span class="btnSoft"><img name="btnSoft01" src="/static/apps/EVC.png" <div style="position:absolute; top:10px; left:292px; width:70px; z-index:20;"
+      <div id="softSpacer01" class="posTitleSoftSpacer"><a id="titleUrl01" href=""></a></div>
+      <div id="softFocusImage01" class="posTitleSoftFocusImage"></div>
+      <div id="details01" class="posTitleDetails" nowrap=""><span class="style13"></span></div>
   </div>
   <div id="rec03" style="">
       <div id="soft03" class="posTitleSoft"></div>
       <div align="left" id="new03" class="posTitleNew" style="display:none"> <img src="/static/images//banner/NEW_en.gif"></div>
-      <div id="softShadow03" class="posTitleSoftShadow"><span class="btnSoft"><img name="btnSoft03" src="/static/images//banner/GifA_Soft_noAction.png" class="btnSoft" border="0"></span></div>
+      <div id="softShadow03" class="posTitleSoftShadow"><span class="btnSoft"><img name="btnSoft03" src="/static/images//banner/GifA_Soft_noAction.png" class="btnSoft" border="0" onmousedown="MM_swapImage('btnSoft03','','/static/images//banner/GifA_Soft_Press.png',1);focus_Header();" onmouseup="MM_swapImage('btnSoft03','','/static/images//banner/GifA_Soft_Over.png',1)focus_Header();" onmouseover="MM_swapImage('btnSoft03','','/static/images//banner/GifA_Soft_Over.png',1); snd.playSE( cSE_Forcus );move_fleeze_cursor();focus_Header();" onmouseout="MM_swapImage('btnSoft03','','/static/images//banner/GifA_Soft_noAction.png',1);" onclick="snd.playSE(cSE_Decide);"></span></div>
       <div id="softSpacer03" class="posTitleSoftSpacer"><a id="titleUrl03" href=""></a></div>
       <div id="softFocusImage03" class="posTitleSoftFocusImage"></div>
       <div id="details03" class="posTitleDetails" nowrap=""><span class="style13"></span></div>
   </div>
+     <div id="title03" style="">
+      <div id="soft01" class="posTitleSoft"></div>
+      <div align="left" id="new01" class="posTitleNew" style="display:none"> <img src="/static/images//banner/NEW_en.gif"></div>
+      <div id="softShadow01" class="posTitleSoftShadow"><span class="btnSoft"><img name="btnSoft01" src="/static/apps/Internet.png" <div style="position:absolute; top:90px; left:10px; width:70px; z-index:-1;"
+      <div id="softSpacer01" class="posTitleSoftSpacer"><a id="titleUrl01" href=""></a></div>
+      <div id="softFocusImage01" class="posTitleSoftFocusImage"></div>
+      <div id="details01" class="posTitleDetails" nowrap=""><span class="style13"></span></div>
+</div>
   <div id="rec04" style="">
       <div id="soft04" class="posTitleSoft"></div>
       <div align="left" id="new04" class="posTitleNew" style="display:none"> <img src="/static/images//banner/NEW_en.gif"></div>
-      <div id="softShadow04" class="posTitleSoftShadow"><span class="btnSoft"><img name="btnSoft04" src="/static/images//banner/GifA_Soft_noAction.png" class="btnSoft" border="0"></span></div>
+      <div id="softShadow04" class="posTitleSoftShadow"><span class="btnSoft"><img name="btnSoft04" src="/static/images//banner/GifA_Soft_noAction.png" class="btnSoft" border="0" onmousedown="MM_swapImage('btnSoft04','','/static/images//banner/GifA_Soft_Press.png',1);focus_Header();" onmouseup="MM_swapImage('btnSoft04','','/static/images//banner/GifA_Soft_Over.png',1)focus_Header();" onmouseover="MM_swapImage('btnSoft04','','/static/images//banner/GifA_Soft_Over.png',1); snd.playSE( cSE_Forcus );move_fleeze_cursor();focus_Header();" onmouseout="MM_swapImage('btnSoft04','','/static/images//banner/GifA_Soft_noAction.png',1);" onclick="snd.playSE(cSE_Decide);">
+    </a></span></div>
       <div id="softSpacer04" class="posTitleSoftSpacer"><a id="titleUrl04" href=""></a></div>
       <div id="softFocusImage04" class="posTitleSoftFocusImage"></div>
       <div id="details04" class="posTitleDetails" nowrap=""><span class="style13"></span></div>
+  </div>
+    <div id="title04" style="">
+      <div id="soft01" class="posTitleSoft"></div>
+      <div align="left" id="new01" class="posTitleNew" style="display:none"> <img src="/static/images//banner/NEW_en.gif"></div>
+      <div id="softShadow01" class="posTitleSoftShadow"><span class="btnSoft"><img name="btnSoft01" src="/static/apps/NC.png" <div style="position:absolute; top:90px; left:292px; width:70px;"
+      <div id="softSpacer01" class="posTitleSoftSpacer"><a id="titleUrl01" href=""></a></div>
+      <div id="softFocusImage01" class="posTitleSoftFocusImage"></div>
+      <div id="details01" class="posTitleDetails" nowrap=""><span class="style13"></span></div>
   </div>
 </div>
 
@@ -2481,6 +2527,22 @@ const unused = wiiShop.connecting;
         </div>
         <div class="style5" id="txtGoShopping" align="center">
             Start Shopping</div>
+		<div class="style6" id="txtGoShopping" style="position:absolute; top:100px; left:120px; width:150px;">
+            Check Mii Out Channel</div>
+		<div class="style6" id="txtGoShopping" style="position:absolute; top:140px; left:120px; width:150px;">
+            0 Wii Points</div>
+		<div class="style6" id="txtGoShopping" style="position:absolute; top:100px; left:400px; width:150px;">
+            Everybody Votes Channel</div>
+		<div class="style6" id="txtGoShopping" style="position:absolute; top:140px; left:400px; width:150px;">
+            0 Wii Points</div>
+		<div class="style6" id="txtGoShopping" style="position:absolute; top:180px; left:120px; width:150px;">
+            Internet Channel</div>
+		<div class="style6" id="txtGoShopping" style="position:absolute; top:220px; left:120px; width:150px;">
+            0 Wii Points</div>
+		<div class="style6" id="txtGoShopping" style="position:absolute; top:180px; left:400px; width:150px;">
+            Nintendo Channel</div>
+		<div class="style6" id="txtGoShopping" style="position:absolute; top:220px; left:400px; width:150px;">
+            0 Wii Points</div>
         <div id="bannerspacer">
             <a href="/home" onclick="snd.playSE(cSE_Decide);" onmouseover="snd.playSE( cSE_Forcus ); MM_swapImage('GoShop','','/static/images//banner/GifA_GoShop_Over.png',1);move_fleeze_cursor();" onmouseout="MM_swapImage('GoShop','','/static/images//banner/GifA_GoShop_noAction.png',1);">
                 <img src="/static/images//spacer.gif" width="352" height="56" border="0">

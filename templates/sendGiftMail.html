@@ -1054,14 +1054,16 @@ function kdown()
   </div>
 </div>
 
-<div id="BGimg" style="position:absolute; display:none; left:0px; top:0px; width:608px; height:456px; z-index:0; overflow: hidden;">
-  <img src="/static/images//back/B_19_bg.png" width="608" height="456" border="0"/>
+<div id="BGimg" style="position:absolute; left:0px; top:0px; width:608px; height:456px; z-index:0;">
+  <img src="/static/images/back/B_19_bg.png" width="608" height="456" border="0"/>
 </div>
 
 <script>
-function handleMsgSend() {
-	var msg = document.getElementById("msg").value;
-	sendGiftMail({{ friend }}, "/debug", msg, 3);
+function sendGiftMail(friend, url, msg, mii) {
+    trace("SENDMAIL: Sending Mail!!!");
+    var nwc24 = new wiiNwc24 ;
+    nwc24.sendGiftMailAsync(friend, url, msg, mii);
+    trace("SENDMAIL: Sent!");
 }
 </script>
 

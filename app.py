@@ -151,7 +151,7 @@ def WiiPoints():
     
 @app.route("/pointscard")
 def pointscard():
-    return render_template('Redeem_PointCard.html')
+    return render_template('pointscard.html')
 
 @app.route("/downloadinfo")
 def downloadinfo():
